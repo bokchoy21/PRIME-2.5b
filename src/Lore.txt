@@ -2072,6 +2072,11 @@ kObj::PeaShooter - pea shooter
     is ubiquitous the pea shooter has virtually limitless ammunition.
     If only damage dealt was something more respectable.
 
+kObj::CashPistol - cash pistol
+    This small pistol is installed with a micro buckazoid-bullet trader.
+    All you need to do is ensuring you have enough buckazoids
+    before the fight!
+
 kObj::ConvPistol - conventional pistol
     In use for more than 60 years, the M4A3 and
     it's variants are the main sidearm for the

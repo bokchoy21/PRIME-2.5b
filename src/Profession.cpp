@@ -375,7 +375,7 @@ know_software (shObject *obj)
 }
 
 /* Preparation for orcish version of software engineer. */
-/*
+
 static void
 initCracker (shCreature *hero)
 {
@@ -412,16 +412,15 @@ initCracker (shCreature *hero)
 
     static const EquipmentLine stuff[] =
     {
-        {kObjPeaShooter, "+0"},
+        {kObjCashPistol, "+0"},
         {kObjOrdinaryJumpsuit, "+0"},
         {kObjMiniComputer, "b=0 !p !i +0"},
-        {(uintptr_t)&prob::FloppyDisk, "!i !c s"},
-        {(uintptr_t)&prob::FloppyDisk, "!i !c s"},
-        {(uintptr_t)&prob::FloppyDisk, "!i !c s"},
+        {kObjHackingDisk, "b=0 !i"},
+        {kObjBlankDisk, "b=0 !i"},
         {(uintptr_t)&prob::FloppyDisk, "66% !i !c s"},
         {(uintptr_t)&prob::FloppyDisk, "33% !i !c s"},
-        {kObjCoffee, "1d2"},
-        {kObjDuctTape, "1d2"},
+        {kObjCoffee, "1d2 b=0"},
+        {kObjDuctTape, "1d2 b=0"},
         {kObjRestrainingBolt, NULL},
         {kObjEnergyCell, "200"},
         {kObjMoney, "2d50"},
@@ -436,7 +435,7 @@ know_piracy (shObject *obj)
     if (obj->isA (kFloppyDisk) or obj->has_subtype (computer))
         obj->set (obj::known_infected | obj::known_cracked | obj::known_fooproof);
 }
-*/
+
 
 static void
 initSpaceMarine (shCreature *hero)
@@ -1418,7 +1417,7 @@ initializeProfessions (void)
         "Lead Programmer",
         "VP Engineering",
         "High Programmer");
-/*
+
     Cracker = new shProfession ("cracker", 8, 3, 1, 2,
         initCracker,
         know_piracy,
@@ -1432,7 +1431,7 @@ initializeProfessions (void)
         "Sneaker",
         "Phreaker",
         "One");
-*/
+
     Janitor = new shProfession ("janitor", 9, 3, 2, 2, initJanitor,
         know_janitor,
         "Toilet Scrubber",
@@ -1637,6 +1636,8 @@ chooseProfession ()
     menu->addPtrItem ('a', "Human Astronaut", Astronaut);
     menu->addPtrItem ('q', "Human Quarterback", Quarterback);
     menu->addPtrItem ('j', "Space Orc Janitor", Janitor);
+    menu->addHeader ("Violent citizen:");
+    menu->addPtrItem ('c', "Space Orc Cracker", Cracker);
     menu->addHeader ("Outsider:");
     menu->addPtrItem ('X', "Xel'Naga", XelNaga);
     menu->addHeader ("Random choice:");
