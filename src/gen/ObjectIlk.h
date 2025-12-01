@@ -294,6 +294,7 @@ kObjFakeOrgasmatron2,
 kObjFakeOrgasmatron3,
 kObjFakeOrgasmatron4,
 kObjFakeOrgasmatron5,
+kObjCashPistol,
 kObjNumIlks
 };
 #endif
