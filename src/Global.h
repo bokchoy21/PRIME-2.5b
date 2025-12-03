@@ -2,7 +2,7 @@
 #define GLOBAL_H
 
 #define ZAPM_VERSION "0.8.2"
-#define PRIME_VERSION "2.5a"
+#define PRIME_VERSION "2.5b"
 
 #ifdef DJGPP
 #include <stdarg.h>
