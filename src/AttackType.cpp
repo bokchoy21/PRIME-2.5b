@@ -13,6 +13,7 @@ shAttack::noun ()
     /* TODO: get rid of kExplode exception and turn this into a table. */
     switch (mType) {
     case kNoAttack: return "non-attack";
+    case kPlasmaArrow: return "plasma arrow";
     case kAcidBath: return "acid bath";
     case kAcidSplash: return "acid splash";
     case kAccelerationRay: return "acceleration ray";

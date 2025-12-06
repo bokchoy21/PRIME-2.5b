@@ -152,6 +152,8 @@ static const shObjId yautjalore[] = {
     kObjSpeargun,
     kObjPlasmaCaster,
     kObjMedicomp,
+    kObjPlasmaBow,
+    kObjPlasmaSword,
     kObjSatCom
 };
 static const int numyautjafacts = sizeof (yautjalore) / sizeof (shObjId);
@@ -602,14 +604,17 @@ initYautja (shCreature *hero)
         {kObjSpeargun, "b=0 +0"},
         {kObjSpearheadDart, "20d2"},
         {kObjNothing, NULL},
+		{kObjPlasmaBow, "b=0 +0"},
+		{kObjEnergyCell, "200"},
+        {kObjNothing, NULL},
         {kObjSmartDisc, "b=0 +0"},
         {kObjRecallDisk, "b=0 !c !i"},
         {kObjNothing, NULL}
     };
-    int rngwpn = RNG (4);
+    int rngwpn = RNG (5);
     addStartingEquipment (hero, &ranged[rngwpn * 3]);
     hero->gainRank (rngwpn <= 1 ? kHandgun :
-                    rngwpn == 2 ? kLightGun : kGrenade, 2);
+                    rngwpn == 4 ? kGrenade : kLightGun, 2);
 
     const EquipmentLine melee[] =
     {
@@ -618,11 +623,14 @@ initYautja (shCreature *hero)
         {kObjRazorWhip, "b=0 +0"},
         {kObjNothing, NULL},
         {kObjCombiStick, "b=0 +0"},
+        {kObjNothing, NULL},
+        {kObjPlasmaSword, "b=0 +0"},
         {kObjNothing, NULL}
     };
-    int melwpn = RNG (3);
+    int melwpn = RNG (4);
     addStartingEquipment (hero, &melee[melwpn * 2]);
-    hero->gainRank (melwpn == 0 ? kUnarmedCombat : kMeleeWeapon, 2);
+    hero->gainRank (melwpn == 0 ? kUnarmedCombat : 
+					melwpn == 3 ? kSword : kMeleeWeapon, 2);
 
     const EquipmentLine stuff[] =
     {

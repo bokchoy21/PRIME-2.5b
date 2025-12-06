@@ -2340,6 +2340,23 @@ kObj::ZapGun - reticulan zap gun
         Olna Cartier, "Abduction Procedures and Standards",
         Unified Solar Press, Enceladus, 2119
 
+kObj::PlasmaSword - plasma sword
+    Unlike other regular swords of Yautja design,
+    Plasma Swords possess greater cutting power thanks to
+    red hot plasma seething along the edge,
+    more so in the hands of a skilled warrior and hunter.
+
+        [ Xenopedia at avp.fandom.com ]
+
+kObj::PlasmaBow - plasma bow
+    When fully deployed, a plasma bowstring is generated
+    between the limbs and a physical nock that is stored
+    in the grip of the bow. Drawing this nock back will tense
+    the bowstring and generate a plasma arrow that can
+    then be loosed at a target.
+
+        [ Xenopedia at avp.fandom.com ]
+
 #WEAPONS - GRENADES
 
 #kObj::GenericGrenade - grenade

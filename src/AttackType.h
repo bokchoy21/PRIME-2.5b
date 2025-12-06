@@ -81,6 +81,7 @@ struct shAttack
 {
     enum Type {        /* primarily used for descriptive purposes */
         kNoAttack,
+        kPlasmaArrow,
         kAccelerationRay,
         kAcidBath,     /* Acid pit trap. */
         kAcidSplash,   /* Acid blood. */
