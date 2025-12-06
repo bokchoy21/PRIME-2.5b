@@ -7,6 +7,8 @@ actually it's nearly completed in 2.5a but never published.
 I just free it from comments and give it a new weapon cashpistol.
 cashpistol uses buckazoids as ammo and shoots twice in one action.
 
+(2025/12/6)add some new weapons from Predators: Badlands
+
 on reporting bug:
 
 everyone is welcome to report bugs here but don't expect me to fix them.
