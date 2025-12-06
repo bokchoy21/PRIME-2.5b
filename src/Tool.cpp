@@ -1112,6 +1112,14 @@ useRemote (shCreature *user, shObject *remote)
     };
     const int num_trig_mon = sizeof (triggerable) / sizeof (shMonId);
 
+	if(c->isA(kMonSmartBomb)
+		or c->isA(kMonKamikazeGoblin)
+		or c->isA(kMonSmartMissile)
+		or c->isA(kMonSpiderMine)){
+		c->die(kKilled, user, remote, NULL);
+		return elapsed;
+	}
+	
     bool is_eligible = false;
     if (c)
         for (int i = 0; i < num_trig_mon; ++i)
