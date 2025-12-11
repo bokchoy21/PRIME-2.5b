@@ -241,7 +241,9 @@ main (int argc, char **argv)
     } else
 #endif
         fprintf (stdout, "Thanks for playing!\n");
-    fprintf (stdout, "Please submit bug reports at psiweapon@gmail.com or michal@kast.net.pl\n");
+    fprintf (stdout, 
+	"Please submit bug reports at psiweapon@gmail.com or michal@kast.net.pl\n"
+	"or https://github.com/bokchoy21/PRIME-2.5b\n");
 #ifndef NOGUI
     if (noteye) {
         noteye_halt ();
@@ -282,7 +284,7 @@ mainLoop (void)
 
         if (Flags.mKeySet[0] == '\0')  I->keymapChoice ();
         I->p ("Welcome to \"PRIME\".  Press '?' or F1 for help.");
-        I->p ("Please submit bug reports at: psiweapon@gmail.com, michal@kast.net.pl");
+        I->p ("Please submit bug reports at: psiweapon@gmail.com, michal@kast.net.pl or https://github.com/bokchoy21/PRIME-2.5b");
         if (BOFH)
             I->p ("Bastard Operator From Hell mode is on.");
 
