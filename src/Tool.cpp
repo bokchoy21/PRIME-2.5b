@@ -1112,12 +1112,58 @@ useRemote (shCreature *user, shObject *remote)
     };
     const int num_trig_mon = sizeof (triggerable) / sizeof (shMonId);
 
+	//used on explosives or suicide boomer
 	if(c->isA(kMonSmartBomb)
 		or c->isA(kMonKamikazeGoblin)
 		or c->isA(kMonSmartMissile)
 		or c->isA(kMonSpiderMine)){
-		c->die(kKilled, user, remote, NULL);
-		return elapsed;
+		if(remote->isBuggy()){
+			//bugged
+			I->p("%s failed to send signal", YOUR(remote));
+			remote->set (obj::known_bugginess);
+			return elapsed;
+		}
+		if(remote->isOptimized() or c->isPet()){
+			//optimized or the target is a pet
+			if(c->isA(kMonKamikazeGoblin)){
+				c->die(kSlain, user, remote, NULL);
+			} else{
+				c->die(kKilled, user, remote, NULL);
+			}
+			if(user->canSee(c)){
+				if(c->isA(kMonKamikazeGoblin)){
+					I->p("you detonate the %s", c->mName);
+				}else{
+					I->p("you disarm the %s", c->mName);
+				}
+			}else{
+				I->p("%s reports signal was accepted.", YOUR (remote));
+			}
+			return elapsed;
+		}else{
+			//degugged, wish you good luck or smart enough
+			if(RNG(2) == 1 
+				or user->getSkillModifier(kHacking) >= 5){
+				if(c->isA(kMonKamikazeGoblin)){
+					c->die(kSlain, user, remote, NULL);
+				} else{
+					c->die(kKilled, user, remote, NULL);
+				}
+				if(user->canSee(c)){
+					if(c->isA(kMonKamikazeGoblin)){
+						I->p("you detonate the %s", c->mName);
+					}else{
+						I->p("you disarm the %s", c->mName);
+					}
+				}else{
+					I->p("%s reports signal was accepted.", YOUR (remote));
+				}
+				return elapsed;
+			}else{
+				I->p("%s failed to send signal", YOUR(remote));
+				return elapsed;
+			}
+		}
 	}
 	
     bool is_eligible = false;
@@ -1127,14 +1173,14 @@ useRemote (shCreature *user, shObject *remote)
                 is_eligible = true;
                 break;
             }
-
-    /* Is the bot owned or the remote overridden? */
+/*
+    // Is the bot owned or the remote overridden?
     bool will_respond = is_eligible and (c->isPet () or remote->is (obj::cracked));
     if (is_eligible and !will_respond) {
         I->p ("%s reports signal was rejected.");
         return elapsed;
     }
-
+*/
     bool will_react = false;
     if (!c and f and f->isDoor () and !f->isAutomaticDoor () and !f->isLockedDoor ())
         will_react = true;
@@ -1143,10 +1189,10 @@ useRemote (shCreature *user, shObject *remote)
         I->p ("%s reports no feedback.", YOUR (remote));
         return elapsed;
     }
-
+/*
     if (c and will_respond) {
         bool see = user->canSee (c);
-        /* Issue go-boom order! */
+        // Issue go-boom order! 
         for (int i = 0; i < MAXATTACKS; ++i) {
             shAttack &atk = Attacks[c->myIlk ()->mAttacks[i].mAttId];
             if (atk.mType == shAttack::kExplode) {
@@ -1159,7 +1205,7 @@ useRemote (shCreature *user, shObject *remote)
         }
         return elapsed;
     }
-
+*/
     if (f and will_react) {
         bool see = user->canSee (x, y);
 
