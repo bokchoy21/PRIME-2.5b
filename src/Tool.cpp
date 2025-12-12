@@ -1120,7 +1120,7 @@ useRemote (shCreature *user, shObject *remote)
 		if(remote->isBuggy()){
 			//bugged
 			I->p("%s failed to send signal", YOUR(remote));
-			remote->set (obj::known_bugginess);
+			//remote->set (obj::known_bugginess);
 			return elapsed;
 		}
 		if(remote->isOptimized() or c->isPet()){
@@ -1947,3 +1947,4 @@ initializeTools ()
     AllIlks[kObjFakeOrgasmatron4].mUseFunc = useBazaaroOrgasmatron;
     AllIlks[kObjFakeOrgasmatron5].mUseFunc = useBazarroOrgasmatron;
 }
+
